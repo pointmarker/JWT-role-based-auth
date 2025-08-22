@@ -12,7 +12,6 @@ function authorizeRole(roles = []){
                 if(roles.length && !roles.includes(payload.role)){
                     return res.status(403).send({ message: "forbidden" });
                 }
-                req.payload = payload;
                 next();
             })
         } catch (error) {
@@ -20,5 +19,6 @@ function authorizeRole(roles = []){
         }
     }
 }
+
 
 module.exports = {authorizeRole}

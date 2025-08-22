@@ -2,7 +2,7 @@ console.log('coworker.js çalıştı')
 
 window.onload = async(e) => {
     try {
-        const res = await fetch('/auth/coworker',{
+        const res = await fetch('/coworker',{
             method: 'GET',
             headers: {'Content-Type': "application/json"},
             credentials: 'include'
@@ -10,15 +10,11 @@ window.onload = async(e) => {
 
         if(!res.ok) {
             alert('not authorized')
-            window.onload.href = "/login"
+            window.location.href = "/login"
         }
         const data = await res.json()
 
-        console.log(data.username, data.role)
-
     } catch (error) {
-        console.error("feed.js hata",error)
-        alert('not authorized')
-        window.onload.href = "/login"
+        console.error("coworker.js hata",error)
     }
 }

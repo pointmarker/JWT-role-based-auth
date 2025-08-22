@@ -3,7 +3,7 @@ console.log('login.js çalıştı')
 const logForm = document.getElementById('loginForm')
 logForm.addEventListener('submit', async(e) => {
     e.preventDefault()
-    const fd = new FormData(regForm)
+    const fd = new FormData(logForm)
 
     const payload = {
         username: fd.get('username'),

@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const router = require('./routes/index');
+const router = require('./routes/index.route');
 const database = require('./config/db')
 const env = require('./environment/environment');
 

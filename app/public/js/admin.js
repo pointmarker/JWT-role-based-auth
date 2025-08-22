@@ -2,7 +2,7 @@ console.log('admin.js çalıştı')
 
 window.onload = async(e) => {
     try {
-        const res = await fetch('/auth/admin',{
+        const res = await fetch('/admin',{
             method: 'GET',
             headers: {'Content-Type': "application/json"},
             credentials: 'include'

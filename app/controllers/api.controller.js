@@ -1,4 +1,11 @@
 const jwt = require('jsonwebtoken');
-const {ACCESS_TOKEN, REFRESH_TOKEN} = require('../environment/environment')
+const {haveUserByRequest} = require('../services/auth.service')
 
-module.export = {}
+async function currentUserController(req,res,next){
+    const user = haveUserByRequest(req,res,jwt)
+    console.log("currentUSerController ip adresi",req.ip)
+    console.log('currentUserController user: ', user)
+    res.send({message: 'success'})
+}
+
+module.exports = { currentUserController}

@@ -1,5 +1,6 @@
 const {getDb} = require('../config/db')
 const bcrypt = require('bcrypt')
+const {ACCESS_TOKEN} = require('../environment/environment')
 
 function roleRandomizer(){
     const roles = ['admin', 'coworker', 'member'];
@@ -20,4 +21,13 @@ async function getUserByUsernameAndPassword(username,password){
     else return null
 }
 
-module.exports = {createHashword, getUserByUsernameAndPassword,roleRandomizer}
+function haveUserByRequest(req,res,jwt){
+    const token = req.cookies.access_token
+    if(!token) return res.status(404).send({message: 'not found'})
+    const user = jwt.verify(token, ACCESS_TOKEN)
+    if(!user) return res.status(401).send({message: 'unauth'});
+
+    return user
+}
+
+module.exports = {createHashword, getUserByUsernameAndPassword,roleRandomizer,haveUserByRequest}
