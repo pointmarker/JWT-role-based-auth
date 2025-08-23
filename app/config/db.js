@@ -42,4 +42,11 @@ function getDb(){
     return db
 }
 
-module.exports = {connectDb, mongoStart, mongoClose,getDb}
+
+mongoRun = async() => {
+    const client = await database.mongoStart()
+    database.connectDb(client)
+}
+
+
+module.exports = {mongoRun, getDb}

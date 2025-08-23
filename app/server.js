@@ -13,12 +13,7 @@ app.use(express.static(path.join(__dirname,"public")))
 app.use(('/'),router)
 
 
-mongoRun = async() => {
-    const client = await database.mongoStart()
-    database.connectDb(client)
-}
-
-mongoRun();
+await mongoRun();
 
 
 app.get('/', [(req,res,next) =>{
